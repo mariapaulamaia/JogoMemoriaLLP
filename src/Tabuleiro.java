@@ -16,6 +16,7 @@ public class Tabuleiro {
             }
         }
 
+
         for (int i = 1; i < 9; i++) {
             for (int j = 0; j < 2; j++) {
                 do{
@@ -34,7 +35,7 @@ public class Tabuleiro {
                 System.out.print(tabuleiro[i][j]+" ");
 
             }
-            System.out.println("\n");
+            System.out.print("\n");
         }
         
     }

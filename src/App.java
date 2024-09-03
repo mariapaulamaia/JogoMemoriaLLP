@@ -16,12 +16,24 @@ public class App {
 
         int paresRevelados = 0;
         int rodadas = 1;
-        int linha;
-        int coluna;
+        int []linha = new int[2];
+        int []coluna = new int[2];
+        int []carta = new int[2];
 
         while (paresRevelados < 8) {
-            linha = Integer.parseInt(JOptionPane.showInputDialog("Digite a linha desejada:\n0   x  x  x  x\n1   x  x  x  x\n2   x  x  x  x\n3   x  x  x  x"));
-            coluna = Integer.parseInt(JOptionPane.showInputDialog("Digite a coluna desejada:\n   0  1  2  3\n   x  x  x  x\n   x  x  x  x\n   x  x  x  x\n   x  x  x  x"));
+            for (int i = 0; i < 2; i++) {
+                linha[i] = Integer.parseInt(JOptionPane.showInputDialog("Digite a linha desejada:\n0   x  x  x  x\n1   x  x  x  x\n2   x  x  x  x\n3   x  x  x  x"));
+                coluna[i] = Integer.parseInt(JOptionPane.showInputDialog("Digite a coluna desejada:\n   0  1  2  3\n   x  x  x  x\n   x  x  x  x\n   x  x  x  x\n   x  x  x  x"));
+                carta[i] = tabuleiro.tabuleiro[linha[i]][coluna[i]];
+
+                
+            }
+            if (carta[0] == carta[1]) {
+                paresRevelados++;
+                revelados.tabuleiro[linha[0]][coluna[0]] = 1;
+                revelados.tabuleiro[linha[1]][coluna[1]] = 1;
+
+            }
 
         }
 
