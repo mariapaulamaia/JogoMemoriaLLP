@@ -2,16 +2,22 @@ import javax.swing.JOptionPane;
 
 public class App {
     public static void main(String[] args) throws Exception {
+        Jogador jogador1 = new Jogador();
+        Jogador jogador2 = new Jogador();
+        Jogador jogador = new Jogador();
+        Computador computador = new Computador();
+
         Tabuleiro tabuleiro = new Tabuleiro();
         Revelado revelados = new Revelado();
+
         int modoDeJogo = Integer.parseInt(JOptionPane.showInputDialog("Deseja jogar:\n1.Em dupla\n2.Contra computador"));
 
         if (modoDeJogo == 1) {
-            Jogador jogador1 = new Jogador(JOptionPane.showInputDialog("Qual o nome do Jogador 1?"));
-            Jogador jogador2 = new Jogador(JOptionPane.showInputDialog("Qual o nome do Jogador 2?"));
+            jogador1.setNome(JOptionPane.showInputDialog("Qual o nome do Jogador 1?"));
+            jogador2.setNome(JOptionPane.showInputDialog("Qual o nome do Jogador 2?"));
         }
         else{
-            Computador computador = new Computador();
+            jogador.setNome(JOptionPane.showInputDialog("Qual o nome do Jogador?"));
         }
 
         int paresRevelados = 0;
@@ -32,8 +38,17 @@ public class App {
                 paresRevelados++;
                 revelados.tabuleiro[linha[0]][coluna[0]] = 1;
                 revelados.tabuleiro[linha[1]][coluna[1]] = 1;
+                if(rodadas%2 != 0){
+                    jogador.marcarPonto();
+                }
+                else{
+                    computador.marcarPonto();
+                }
 
             }
+            rodadas++;
+            System.out.println("Pares "+jogador.getNome()+": "+jogador.getPares()+"\nPares computador: "+computador.getPares());
+            
 
         }
 
